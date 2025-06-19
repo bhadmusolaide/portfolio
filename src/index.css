@@ -36,3 +36,63 @@ html, body {
     transform: translateY(0);
   }
 }
+
+/* Slide/fade animations for case study transitions */
+@keyframes slideLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+@keyframes slideRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+.animate-slide-left {
+  animation: slideLeft 0.35s cubic-bezier(0.4,0,0.2,1);
+  opacity: 0 !important;
+}
+.animate-slide-right {
+  animation: slideRight 0.35s cubic-bezier(0.4,0,0.2,1);
+  opacity: 0 !important;
+}
+
+/* Slide-in for new case study effect */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.slide-in-left {
+  animation: slideInLeft 0.5s cubic-bezier(0.4,0,0.2,1);
+  opacity: 1 !important;
+}
+.slide-in-right {
+  animation: slideInRight 0.5s cubic-bezier(0.4,0,0.2,1);
+  opacity: 1 !important;
+}
