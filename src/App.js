@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -280,6 +281,7 @@ function App() {
       <footer className="py-6 text-center text-gray-600 dark:text-gray-400 text-sm border-t border-gray-800 dark:border-gray-700">
         Built with ❤️ by Olaide Bhadmus — Designed for impact and clarity
       </footer>
+      <Analytics />
     </div>
   );
 }
