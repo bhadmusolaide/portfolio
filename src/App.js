@@ -320,7 +320,7 @@ function App() {
             Olaide Bhadmus
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 dark:text-gray-400 mb-6">Operations Manager | Systems Thinker | Team Builder</p>
-          <p className="text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500 mb-8">Lagos, Nigeria (Remote) | <span className="text-blue-400 hover:underline cursor-pointer"><a href='mailto:bhadmusolaide@gmail.com'>Email</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://www.linkedin.com/in/olaide-bhadmus/' target='_blank'>LinkedIn</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://olaide-resume.vercel.app/' target='_blank'>Website</a></span></p>
+          <p className="text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500 mb-8">Lagos, Nigeria (Remote) | <span className="text-blue-400 hover:underline cursor-pointer"><a href='mailto:bhadmusolaide@gmail.com'>Email</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://www.linkedin.com/in/olaide-bhadmus/' target='_blank'>LinkedIn</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://olaide-resume.vercel.app/' target='_blank'>Website</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://github.com/bhadmusolaide' target='_blank'>Github</a></span></p>
           
           <p className="text-base sm:text-lg text-gray-300 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed animate-fade-in-up">
             I fix messy systems, lead distributed teams, and help early-stage SaaS companies scale without burning out their resources. My experience spans customer support, product ops, process design, and internal tooling. No fluff, just structure, clarity, and follow-through.
@@ -413,7 +413,9 @@ function App() {
               hover:bg-gray-800 dark:hover:bg-gray-700 hover:shadow-blue-500/20`}
             style={{ minHeight: 380 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-yellow-400 to-pink-500 text-transparent bg-clip-text text-center flex items-center justify-center gap-2">📌 CASE STUDY</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-yellow-400 to-pink-500 text-transparent bg-clip-text text-center flex items-center justify-center gap-2">
+              📌 CASE STUDY {activeCaseStudy + 1} of {caseStudies.length}
+            </h2>
             <h3 className="text-lg sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 text-blue-400 text-center">{caseStudies[activeCaseStudy].title}</h3>
             <div className="mb-2 text-xs sm:text-gray-400 text-center">
               Company: <span className="font-semibold text-pink-400">{caseStudies[activeCaseStudy].company}</span> &nbsp;|&nbsp; Role: <span className="font-semibold text-blue-400">{caseStudies[activeCaseStudy].role}</span> &nbsp;|&nbsp; Timeline: <span className="font-semibold text-green-400">{caseStudies[activeCaseStudy].timeline}</span>
