@@ -267,10 +267,10 @@ function App() {
           {/* Desktop Menu - move to right */}
           <nav className="hidden md:flex space-x-4 lg:space-x-8 ml-auto">
             <button onClick={() => scrollToSection("hero")} className="hover:text-blue-500 transition-colors px-2 py-1">Home</button>
-            <button onClick={() => scrollToSection("wins")} className="hover:text-blue-500 transition-colors px-2 py-1">Wins</button>
             <button onClick={() => scrollToSection("skills")} className="hover:text-blue-500 transition-colors px-2 py-1">Skills</button>
-            <button onClick={() => scrollToSection("testimonials")} className="hover:text-blue-500 transition-colors px-2 py-1">Testimonials</button>
+            <button onClick={() => scrollToSection("wins")} className="hover:text-blue-500 transition-colors px-2 py-1">Wins</button>
             <button onClick={() => scrollToSection("case-study")} className="hover:text-blue-500 transition-colors px-2 py-1">Case Study</button>
+            <button onClick={() => scrollToSection("testimonials")} className="hover:text-blue-500 transition-colors px-2 py-1">Testimonials</button>
             <button onClick={() => scrollToSection("contact")} className="hover:text-blue-500 transition-colors px-2 py-1">Contact</button>
           </nav>
 
@@ -296,10 +296,10 @@ function App() {
         {menuOpen && (
           <nav className="md:hidden px-2 pb-4 space-y-2 bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-sm w-full">
             <button onClick={() => scrollToSection("hero")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Home</button>
-            <button onClick={() => scrollToSection("wins")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Wins</button>
             <button onClick={() => scrollToSection("skills")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Skills</button>
-            <button onClick={() => scrollToSection("testimonials")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Testimonials</button>
+            <button onClick={() => scrollToSection("wins")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Wins</button>
             <button onClick={() => scrollToSection("case-study")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Case Study</button>
+            <button onClick={() => scrollToSection("testimonials")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Testimonials</button>
             <button onClick={() => scrollToSection("contact")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Contact</button>
           </nav>
         )}
