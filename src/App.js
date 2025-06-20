@@ -238,17 +238,7 @@ function App() {
   const [transitioning, setTransitioning] = useState(false);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
-  // Keyboard navigation
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === 'ArrowLeft' && activeCaseStudy > 0) {
-      handlePrev();
-    } else if (e.key === 'ArrowRight' && activeCaseStudy < caseStudies.length - 1) {
-      handleNext();
-    }
-  }, [activeCaseStudy, caseStudies.length]);
-
-  // Animation handlers
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (activeCaseStudy > 0) {
       setDirection(-1);
       setTransitioning(true);
@@ -257,8 +247,9 @@ function App() {
         setTransitioning(false);
       }, 350);
     }
-  };
-  const handleNext = () => {
+  }, [activeCaseStudy]);
+
+  const handleNext = useCallback(() => {
     if (activeCaseStudy < caseStudies.length - 1) {
       setDirection(1);
       setTransitioning(true);
@@ -267,7 +258,16 @@ function App() {
         setTransitioning(false);
       }, 350);
     }
-  };
+  }, [activeCaseStudy, caseStudies.length]);
+
+  // Keyboard navigation
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'ArrowLeft') {
+      handlePrev();
+    } else if (e.key === 'ArrowRight') {
+      handleNext();
+    }
+  }, [handlePrev, handleNext]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -337,15 +337,15 @@ function App() {
             Olaide Bhadmus
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 dark:text-gray-400 mb-6">Operations Manager | Systems Thinker | Team Builder</p>
-          <p className="text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500 mb-8">Lagos, Nigeria (Remote) | <span className="text-blue-400 hover:underline cursor-pointer"><a href='mailto:bhadmusolaide@gmail.com'>Email</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://www.linkedin.com/in/olaide-bhadmus/' target='_blank'>LinkedIn</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://olaide-resume.vercel.app/' target='_blank'>Website</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://github.com/bhadmusolaide' target='_blank'>Github</a></span></p>
+          <p className="text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500 mb-8">Lagos, Nigeria (Remote) | <span className="text-blue-400 hover:underline cursor-pointer"><a href='mailto:bhadmusolaide@gmail.com'>Email</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://www.linkedin.com/in/olaide-bhadmus/' target='_blank' rel="noopener noreferrer">LinkedIn</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://olaide-resume.vercel.app/' target='_blank' rel="noopener noreferrer">Website</a></span> | <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://github.com/bhadmusolaide' target='_blank' rel="noopener noreferrer">Github</a></span></p>
           
           <p className="text-base sm:text-lg text-gray-300 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed animate-fade-in-up">
             I fix messy systems, lead distributed teams, and help early-stage SaaS companies scale without burning out their resources. My experience spans customer support, product ops, process design, and internal tooling. No fluff, just structure, clarity, and follow-through.
           </p>
 
-          <button className="mt-8 px-6 py-3 text-base sm:text-lg bg-gradient-to-r from-purple-600 to-blue-500 rounded-full text-white font-medium hover:from-blue-500 hover:to-purple-600 transform transition hover:scale-105 shadow-lg hover:shadow-xl">
+          <a href='/OLAIDE BHADMUS-Operations Manager.pdf' target='_blank' rel="noopener noreferrer" className="mt-8 inline-block px-6 py-3 text-base sm:text-lg bg-gradient-to-r from-purple-600 to-blue-500 rounded-full text-white font-medium hover:from-blue-500 hover:to-purple-600 transform transition hover:scale-105 shadow-lg hover:shadow-xl">
             View My Resume
-          </button>
+          </a>
         </div>
       </section>
 
@@ -527,7 +527,7 @@ function App() {
           </ul>
           <div className="space-y-1 sm:space-y-2 text-gray-400 dark:text-gray-500 text-xs sm:text-base">
             <p>Email: <span className="text-blue-400 hover:underline cursor-pointer"><a href='mailto:bhadmusolaide@gmail.com'>bhadmusolaide@gmail.com</a></span></p>
-            <p>LinkedIn: <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://www.linkedin.com/in/olaide-bhadmus/' target='_blank'>https://www.linkedin.com/in/olaide-bhadmus/</a></span></p>
+            <p>LinkedIn: <span className="text-blue-400 hover:underline cursor-pointer"><a href='https://www.linkedin.com/in/olaide-bhadmus/' target='_blank' rel="noopener noreferrer">https://www.linkedin.com/in/olaide-bhadmus/</a></span></p>
           </div>
         </div>
       </section>
