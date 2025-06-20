@@ -6,6 +6,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState('hero');
 
   // Load user preference or default to dark mode
   useEffect(() => {
@@ -29,6 +30,22 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+
+      // Active section highlighting
+      const sectionIds = ["hero", "skills", "wins", "case-study", "testimonials", "contact"];
+      const currentSection = sectionIds.find(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // A section is "active" if its top is within the top 50% of the viewport
+          return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+        }
+        return false;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -66,11 +83,11 @@ function App() {
     },
     {
       title: "Migrated Tools Without Breaking Teams",
-      company: "VideoRemix & LTV Funds",
+      company: "VideoRemix & LTV SaaS Growth Fund",
       points: [
         "Replaced costly Asana setup with ClickUp",
         "Built structured spaces, created templates, onboarded team",
-        "At LTV Funds, moved 6–7 product teams under a single PM system",
+        "At LTV SaaS Growth Fund, moved 6–7 product teams under a single PM system",
         "Introduced blocker-reporting workflows and feedback loops"
       ]
     },
@@ -135,10 +152,10 @@ function App() {
     },
     {
       title: 'How I Got 7 Dev Teams on the Same Page at LTV Funds',
-      company: 'LTV Fund',
+      company: 'LTV SaaS Growth Fund',
       role: 'Development Teams Manager',
       timeline: '2021–2022',
-      context: 'At LTV Fund, each product had its own dev team — about 6–7 in total. They all used different tools, tracked issues their own way, and had no unified update process. It was messy and slow.',
+      context: 'At LTV SaaS Growth Fund, each product had its own dev team — about 6–7 in total. They all used different tools, tracked issues their own way, and had no unified update process. It was messy and slow.',
       problem: [
         'No visibility across teams',
         'Blockers weren\'t flagged early',
@@ -161,7 +178,7 @@ function App() {
     },
     {
       title: 'Digitizing Restaurant Ops Before It Was Cool — 2015, Nigeria',
-      company: 'VideoRemix',
+      company: 'Skippers Fast Food LTD',
       role: 'Head of IT & Customer Service',
       timeline: '2015–2017',
       context: 'In 2015, I joined a large fast-food restaurant, Skippers as Head of IT & Customer Service. Waiters were handwriting orders, running back and forth to the kitchen, and manually tracking everything. The stress was high. The delays were worse.',
@@ -266,12 +283,12 @@ function App() {
           
           {/* Desktop Menu - move to right */}
           <nav className="hidden md:flex space-x-4 lg:space-x-8 ml-auto">
-            <button onClick={() => scrollToSection("hero")} className="hover:text-blue-500 transition-colors px-2 py-1">Home</button>
-            <button onClick={() => scrollToSection("skills")} className="hover:text-blue-500 transition-colors px-2 py-1">Skills</button>
-            <button onClick={() => scrollToSection("wins")} className="hover:text-blue-500 transition-colors px-2 py-1">Wins</button>
-            <button onClick={() => scrollToSection("case-study")} className="hover:text-blue-500 transition-colors px-2 py-1">Case Study</button>
-            <button onClick={() => scrollToSection("testimonials")} className="hover:text-blue-500 transition-colors px-2 py-1">Testimonials</button>
-            <button onClick={() => scrollToSection("contact")} className="hover:text-blue-500 transition-colors px-2 py-1">Contact</button>
+            <button onClick={() => scrollToSection("hero")} className={`transition-colors px-2 py-1 ${activeSection === 'hero' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Home</button>
+            <button onClick={() => scrollToSection("skills")} className={`transition-colors px-2 py-1 ${activeSection === 'skills' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Skills</button>
+            <button onClick={() => scrollToSection("wins")} className={`transition-colors px-2 py-1 ${activeSection === 'wins' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Wins</button>
+            <button onClick={() => scrollToSection("case-study")} className={`transition-colors px-2 py-1 ${activeSection === 'case-study' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Case Study</button>
+            <button onClick={() => scrollToSection("testimonials")} className={`transition-colors px-2 py-1 ${activeSection === 'testimonials' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Testimonials</button>
+            <button onClick={() => scrollToSection("contact")} className={`transition-colors px-2 py-1 ${activeSection === 'contact' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Contact</button>
           </nav>
 
           <div className="flex items-center space-x-4 md:hidden w-full justify-end">
@@ -295,12 +312,12 @@ function App() {
         {/* Mobile Menu */}
         {menuOpen && (
           <nav className="md:hidden px-2 pb-4 space-y-2 bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-sm w-full">
-            <button onClick={() => scrollToSection("hero")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Home</button>
-            <button onClick={() => scrollToSection("skills")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Skills</button>
-            <button onClick={() => scrollToSection("wins")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Wins</button>
-            <button onClick={() => scrollToSection("case-study")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Case Study</button>
-            <button onClick={() => scrollToSection("testimonials")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Testimonials</button>
-            <button onClick={() => scrollToSection("contact")} className="block w-full text-left hover:text-blue-500 transition-colors py-2">Contact</button>
+            <button onClick={() => scrollToSection("hero")} className={`block w-full text-left transition-colors py-2 ${activeSection === 'hero' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Home</button>
+            <button onClick={() => scrollToSection("skills")} className={`block w-full text-left transition-colors py-2 ${activeSection === 'skills' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Skills</button>
+            <button onClick={() => scrollToSection("wins")} className={`block w-full text-left transition-colors py-2 ${activeSection === 'wins' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Wins</button>
+            <button onClick={() => scrollToSection("case-study")} className={`block w-full text-left transition-colors py-2 ${activeSection === 'case-study' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Case Study</button>
+            <button onClick={() => scrollToSection("testimonials")} className={`block w-full text-left transition-colors py-2 ${activeSection === 'testimonials' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Testimonials</button>
+            <button onClick={() => scrollToSection("contact")} className={`block w-full text-left transition-colors py-2 ${activeSection === 'contact' ? 'text-blue-500 font-semibold' : 'hover:text-blue-500'}`}>Contact</button>
           </nav>
         )}
       </header>
@@ -327,7 +344,7 @@ function App() {
           </p>
 
           <button className="mt-8 px-6 py-3 text-base sm:text-lg bg-gradient-to-r from-purple-600 to-blue-500 rounded-full text-white font-medium hover:from-blue-500 hover:to-purple-600 transform transition hover:scale-105 shadow-lg hover:shadow-xl">
-            <a href='/OLAIDE BHADMUS-Operations Manager.pdf' target='_blank'>Download Resume</a>
+            View My Resume
           </button>
         </div>
       </section>
@@ -486,12 +503,12 @@ function App() {
             <div className="rounded-xl p-4 sm:p-6 shadow-lg border bg-gray-800 border-gray-700 flex flex-col items-center text-center">
               <img src="/testimonial3.jpeg" alt="Testimonial 3" className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mb-4 border-4 border-pink-400 object-cover" />
               <p className="text-base sm:text-lg text-gray-300 mb-4 italic">“He's a systems thinker who gets things done. Our migration to new tools was seamless, and his documentation made onboarding a breeze.”</p>
-              <span className="font-semibold text-pink-400 text-xs sm:text-base">— Tanveer Kour, Director of Operations, LTV Funds</span>
+              <span className="font-semibold text-pink-400 text-xs sm:text-base">— Tanveer Kour, Director of Operations, LTV SaaS Growth Fund</span>
             </div>
             <div className="rounded-xl p-4 sm:p-6 shadow-lg border bg-gray-800 border-gray-700 flex flex-col items-center text-center">
               <img src="/testimonial4.jpeg" alt="Testimonial 4" className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mb-4 border-4 border-pink-400 object-cover" />
               <p className="text-base sm:text-lg text-gray-300 mb-4 italic">“Working with Olaide was a game-changing experience for our team. His collaboration and technical insights helped us streamline our processes and deliver better results.”</p>
-              <span className="font-semibold text-pink-400 text-xs sm:text-base">— Gary Armstrong, Operations Manager, LTV Funds</span>
+              <span className="font-semibold text-pink-400 text-xs sm:text-base">— Gary Armstrong, Operations Manager, LTV SaaS Growth Fund</span>
             </div>
           </div>
         </div>
