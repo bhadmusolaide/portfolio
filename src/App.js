@@ -353,8 +353,8 @@ function App() {
       <section id="skills" className="py-16 sm:py-20 px-2 sm:px-4 md:px-8 bg-gray-800 dark:bg-gray-900">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-cyan-400 to-emerald-400 text-transparent bg-clip-text">🔎 WHAT I BRING</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 sm:gap-y-6 text-base sm:text-lg text-gray-300 dark:text-gray-300">
-            {[
+          <ul className="list-disc marker:text-blue-400 dark:marker:text-blue-300 list-inside grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 sm:gap-y-6 text-base sm:text-lg text-gray-300 dark:text-gray-300">
+            {[ 
               "Process design and remote team leadership",
               "SaaS product coordination without bottlenecks",
               "Tool consolidation and cost-cutting",
@@ -371,10 +371,7 @@ function App() {
               "Technical troubleshooting and QA)",
               "Smart restaurant ops and order management systems"
             ].map((item, i) => (
-              <li key={i} className="flex items-center group justify-start sm:justify-center">
-                <span className="w-3 h-3 bg-blue-400 rounded-full mr-2 sm:mr-3 transition-transform group-hover:scale-125"></span>
-                {item}
-              </li>
+              <li key={i}>{item}</li>
             ))}
           </ul>
         </div>
